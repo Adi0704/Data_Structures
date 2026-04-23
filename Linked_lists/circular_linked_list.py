@@ -48,6 +48,23 @@ def insert_at_pos(data,pos,last=None):
 
     return last
 
+def delete_node(pos,last):
+    if last is None:
+        return
+    temp=last.next
+    for i in range(pos-2):
+        temp=temp.next
+    temp.next=temp.next.next
+    return last
+
+def del_specific_node(number,last):
+    if last is None:
+        return
+    prev=last
+    temp=last.next
+    while True:
+        if temp.data==number:
+            prev.next=temp.next
 def print_list(last):
 
     if last is None:
@@ -83,5 +100,10 @@ last=insert_at_pos(33,1,last)
 print_list(last)
 print("\n")
 last=insert_at_pos(89,10,last)
+print_list(last)
+print("\n")
+last=delete_node(2,last)
+print_list(last)
+last=delete_node(4,last)
 print_list(last)
 print("\n")
